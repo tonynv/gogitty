@@ -2,11 +2,13 @@ package config
 
 // Configurations exported
 type Configurations struct {
-	Endpoint         ServerConfigurations
-	GIT_ACCESS_TOKEN string
+	GITHUBAPI_ENDPOINT string
+	GITHUBAPI_TOKEN    string
+	GitHubCfg          ApiConfigurations
 }
 
 // ServerConfigurations exported
-type ServerConfigurations struct {
-	Hostname string
+type ApiConfigurations struct {
+	ApiEndpoint string
+	ApiToken    string
 }

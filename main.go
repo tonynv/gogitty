@@ -6,7 +6,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	c "github.com/tonynv/gogitty/config"
 	"os"
@@ -17,8 +16,10 @@ func main() {
 	viper.SetConfigName(".gogitty")
 
 	// Set the path to look for the configurations file
-	home, _err_homedir := os.UserHomeDir()
-	cobra.CheckErr(_err_homedir)
+	home, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Printf("Unable to User Home Directory , %v", err)
+	}
 	viper.AddConfigPath(home)
 
 	// Enable VIPER to read Environment Variables
@@ -32,22 +33,22 @@ func main() {
 	}
 
 	// Set undefined variables
-	viper.SetDefault("endpoint.hostname", "github.com")
+	viper.SetDefault("GitHubCfg.ApiEndpoint", "github.com")
 
-	err := viper.Unmarshal(&configuration)
-	if err != nil {
-		fmt.Printf("Unable to decode into struct, %v", err)
+	cfgErr := viper.Unmarshal(&configuration)
+	if cfgErr != nil {
+		fmt.Printf("Unable to decode into struct, %v", cfgErr)
 	}
 
 	// Reading variables using the model
 	fmt.Println("Reading variables using the model..")
-	fmt.Println("GitHub Endpoint is\t", configuration.Endpoint.Hostname)
-	fmt.Println("GitHub Token is\t", configuration.GIT_ACCESS_TOKEN)
+	fmt.Println("GitHub Endpoint is\t", configuration.GitHubCfg.ApiEndpoint)
+	fmt.Println("GitHub Token is\t", configuration.GitHubCfg.ApiToken)
 
 	// Reading variables without using the model
-	fmt.Println("\nReading variables without using the model..")
-	fmt.Println("Githib hostname is\t", viper.Get("Endpoint.hostname"))
-	fmt.Println("Git Access Token is\t", viper.Get("GIT_ACCESS_TOKEN"))
+	//fmt.Println("\nReading variables without using the model..")
+	//fmt.Println("Githib hostname is\t", viper.Get("GitHubApi.Endpoint"))
+	//fmt.Println("Git Access Token is\t", viper.Get("GitHubApi.token"))
 	//cmd.Execute()
 
 }

@@ -1,0 +1,4 @@
+---
+githubcfg:
+ apiendpoint: "http://github.com"
+ apitoken: "xxxxxxxxxxxxxxxxxxxxxxxx"
