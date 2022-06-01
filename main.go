@@ -7,6 +7,7 @@ package main
 import (
 	"fmt"
 	"github.com/spf13/viper"
+	"github.com/tonynv/gogitty/cmd"
 	c "github.com/tonynv/gogitty/config"
 	"os"
 )
@@ -41,14 +42,14 @@ func main() {
 	}
 
 	// Reading variables using the model
-	fmt.Println("Reading variables using the model..")
-	fmt.Println("GitHub Endpoint is\t", configuration.GitHubCfg.ApiEndpoint)
-	fmt.Println("GitHub Token is\t", configuration.GitHubCfg.ApiToken)
+	//fmt.Println("Reading variables using the model..")
+	//fmt.Println("GitHub Endpoint is\t", configuration.GitHubCfg.ApiEndpoint)
+	//fmt.Println("GitHub Token is\t", configuration.GitHubCfg.ApiToken)
 
 	// Reading variables without using the model
 	//fmt.Println("\nReading variables without using the model..")
-	//fmt.Println("Githib hostname is\t", viper.Get("GitHubApi.Endpoint"))
+	//fmt.Println("Github hostname is\t", viper.Get("GitHubApi.Endpoint"))
 	//fmt.Println("Git Access Token is\t", viper.Get("GitHubApi.token"))
-	//cmd.Execute()
+	cmd.Execute()
 
 }
