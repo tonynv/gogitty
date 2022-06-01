@@ -17,7 +17,16 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("show called")
+		fmt.Println("Show Configuration")
+		// Reading variables using the model
+		fmt.Println("Reading variables using the model..")
+		fmt.Println("GitHub Endpoint is\t", configuration.GitHubCfg.ApiEndpoint)
+		fmt.Println("GitHub Token is\t", configuration.GitHubCfg.ApiToken)
+
+		// Reading variables without using the model
+		//fmt.Println("\nReading variables without using the model..")
+		//fmt.Println("Github hostname is\t", viper.Get("GitHubApi.Endpoint"))
+		//fmt.Println("Git Access Token is\t", viper.Get("GitHubApi.token"))
 
 	},
 }
