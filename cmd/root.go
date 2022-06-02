@@ -18,6 +18,7 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {},
 }
 var cfgFile string
+var programName = "GOGITTY"
 var configuration c.Configurations
 
 // Execute adds all child commands to the root command and sets flags appropriately.
